@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BERALADY - Meme Token</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8A2BE2;
+            --secondary-color: #FFD700;
+            --accent-color: #FF69B4;
+            --background-color: #1A0033;
+            --text-color: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(26, 0, 51, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .music-note {
+            position: absolute;
+            font-size: 24px;
+            color: var(--accent-color);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .section-separator {
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            margin: 80px 0;
+        }
+
+        .about, .tokenomics, .how-to-buy, .roadmap {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tokenomics-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .tokenomics-list li {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .tokenomics-list li::before {
+            content: '🌟';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .how-to-buy-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .step {
+            flex-basis: calc(50% - 20px);
+            background-color: rgba(138, 43, 226, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .step p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .roadmap-item {
+            padding: 20px;
+            background-color: rgba(138, 43, 226, 0.1);
+            border-radius: 10px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .roadmap-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .roadmap-item:nth-child(odd) {
+            margin-right: 50px;
+        }
+
+        .roadmap-item:nth-child(even) {
+            margin-left: 50px;
+        }
+
+        .roadmap-item:nth-child(odd)::after {
+            right: -60px;
+        }
+
+        .roadmap-item:nth-child(even)::after {
+            left: -60px;
+        }
+
+        .roadmap-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .roadmap-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: rgba(26, 0, 51, 0.8);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .token-address {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .token-address i {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .token-address i:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .step {
+                flex-basis: 100%;
+            }
+
+            .roadmap-item {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            .roadmap-item::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">BERALADY</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#how-to-buy">How to Buy</a>
+                <a href="#roadmap">Roadmap</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="animated-background" id="animatedBackground"></div>
+            <div class="hero-content">
+                <h1>BERALADY</h1>
+                <p>The dazzling diva of the crypto world, capturing hearts and wallets with charm, wit, and star-studded humor! 🌟💃🚀</p>
+                <a href="#how-to-buy" class="cta-button">Join the Show</a>
+            </div>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section id="about" class="about container">
+            <h2>About BERALADY</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://placeholder.com/400x400" alt="BERALADY Illustration">
+                </div>
+                <div class="about-text">
+                    <p>BERALADY is not just another meme token; it's a glamorous journey into the world of crypto stardom. With the charm of a Hollywood diva and the wit of a stand-up comedian, BERALADY is here to make your crypto experience unforgettable.</p>
+                    <p>Our community is a vibrant mix of crypto enthusiasts, meme lovers, and those who appreciate a good laugh. Join us as we redefine what it means to be a meme token in the digital age!</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section id="tokenomics" class="tokenomics container">
+            <h2>TOKENOMICS</h2>
+            <ul class="tokenomics-list">
+                <li>Total Supply: 1,000,000,000,000 BERA</li>
+                <li>5% Transaction Fee: 2% to Holders, 2% to Liquidity Pool, 1% to Marketing</li>
+                <li>50% of Total Supply Burned at Launch</li>
+                <li>Locked Liquidity for 2 Years</li>
+            </ul>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section id="how-to-buy" class="how-to-buy container">
+            <h2>HOW TO BUY</h2>
+            <div class="how-to-buy-steps">
+                <div class="step">
+                    <h3>Step 1: Get a Wallet</h3>
+                    <p>Download a reputable Ethereum wallet like MetaMask or Trust Wallet.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2: Acquire ETH</h3>
+                    <p>Purchase Ethereum (ETH) from a cryptocurrency exchange like Coinbase or Binance.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 3: Connect to a DEX</h3>
+                    <p>Connect your wallet to a decentralized exchange (DEX) like Uniswap or SushiSwap.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 4: Swap ETH for BERA</h3>
+                    <p>Use the DEX's swap feature to exchange your ETH for BERA tokens.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section id="roadmap" class="roadmap container">
+            <h2>ROADMAP</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <h3>Phase 1: Launch & Community Building</h3>
+                    <p>We'll launch BERALADY and focus on growing a strong, engaged community of crypto divas and enthusiasts.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3>Phase 2: Marketing & Partnerships</h3>
+                    <p>Time to hit the red carpet! We'll ramp up marketing efforts and form strategic partnerships with influencers and platforms.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3>Phase 3: Product Development</h3>
+                    <p>We'll develop new features and utilities for BERALADY, including our own NFT collection and staking platform.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3>Phase 4: Expansion & Beyond</h3>
+                    <p>BERALADY goes global! We'll explore new opportunities, expand our reach, and continue to innovate in the meme token space.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class
